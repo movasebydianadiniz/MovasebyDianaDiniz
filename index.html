@@ -5,658 +5,134 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOVA-SE - Escolha seu Plano</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: #FFFFFF;
-            color: #1A1A1A;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 30px 20px;
-            background-color: #E7F1EC;
-            border-radius: 12px;
-        }
-
-        header h1 {
-            color: #1F4D3A;
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-
-        .commitment {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-            margin-top: 30px;
-        }
-
-        .commitment-card {
-            background: #FFFFFF;
-            padding: 20px;
-            border-radius: 8px;
-            border: 2px solid #E7F1EC;
-        }
-
-        .commitment-card h3 {
-            color: #1F4D3A;
-            margin-bottom: 10px;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .commitment-card p {
-            color: #1A1A1A;
-            font-size: 16px;
-            line-height: 1.5;
-        }
-
-        .testimonials-section {
-            background-color: #F3F4F6;
-            padding: 40px 20px;
-            margin: 40px 0;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .testimonials-section h2 {
-            color: #1F4D3A;
-            font-size: 28px;
-            margin-bottom: 15px;
-        }
-
-        .testimonials-section p {
-            color: #1A1A1A;
-            font-size: 18px;
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .stat-card {
-            background: #FFFFFF;
-            padding: 25px;
-            border-radius: 8px;
-            border-left: 4px solid #1F4D3A;
-        }
-
-        .stat-number {
-            color: #1F4D3A;
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            color: #1A1A1A;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .pillars {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .pillar {
-            text-align: center;
-        }
-
-        .pillar h3 {
-            color: #1F4D3A;
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-
-        .pillar p {
-            color: #1A1A1A;
-            font-size: 16px;
-        }
-
-        .plans-section h2 {
-            color: #1F4D3A;
-            font-size: 28px;
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .plans-subtitle {
-            text-align: center;
-            color: #1A1A1A;
-            font-size: 16px;
-            margin-bottom: 40px;
-        }
-
-        .plans-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .plan-card {
-            background: #FFFFFF;
-            border: 2px solid #E7F1EC;
-            border-radius: 12px;
-            padding: 30px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .plan-card:hover {
-            border-color: #1F4D3A;
-            box-shadow: 0 8px 24px rgba(31, 77, 58, 0.1);
-        }
-
-        .plan-card.popular {
-            border-color: #1F4D3A;
-            background: #E7F1EC;
-            transform: scale(1.05);
-        }
-
-        .popular-badge {
-            position: absolute;
-            top: -15px;
-            left: 20px;
-            background: #1F4D3A;
-            color: #FFFFFF;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .plan-name {
-            color: #1F4D3A;
-            font-size: 22px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            margin-top: 10px;
-        }
-
-        .plan-subtitle {
-            color: #1A1A1A;
-            font-size: 14px;
-            margin-bottom: 20px;
-            opacity: 0.8;
-        }
-
-        .plan-price {
-            color: #1F4D3A;
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .plan-price-note {
-            color: #1A1A1A;
-            font-size: 14px;
-            margin-bottom: 25px;
-            opacity: 0.8;
-        }
-
-        .plan-features {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        .plan-features li {
-            color: #1A1A1A;
-            padding: 10px 0;
-            border-bottom: 1px solid #E7F1EC;
-            font-size: 14px;
-        }
-
-        .plan-features li:before {
-            content: "✓ ";
-            color: #1F4D3A;
-            font-weight: bold;
-            margin-right: 8px;
-        }
-
-        .plan-features li:last-child {
-            border-bottom: none;
-        }
-
-        .bonus-section {
-            background: #F3F4F6;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            font-size: 13px;
-        }
-
-        .bonus-section h4 {
-            color: #1F4D3A;
-            font-size: 12px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            letter-spacing: 0.5px;
-        }
-
-        .bonus-section ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .bonus-section li {
-            color: #1A1A1A;
-            padding: 5px 0;
-            font-size: 13px;
-        }
-
-        .bonus-section li:before {
-            content: "★ ";
-            color: #1F4D3A;
-            margin-right: 8px;
-        }
-
-        .cta-button {
-            width: 100%;
-            padding: 14px;
-            background-color: #1F4D3A;
-            color: #FFFFFF;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .cta-button:hover {
-            background-color: #2E6B52;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(31, 77, 58, 0.3);
-        }
-
-        .cta-button-secondary {
-            background-color: #2E6B52;
-        }
-
-        .cta-button-secondary:hover {
-            background-color: #1F4D3A;
-        }
-
-        .faq-section {
-            background-color: #F3F4F6;
-            padding: 40px;
-            border-radius: 12px;
-            margin: 40px 0;
-        }
-
-        .faq-section h2 {
-            color: #1F4D3A;
-            font-size: 24px;
-            margin-bottom: 30px;
-        }
-
-        .faq-item {
-            margin-bottom: 15px;
-            background: #FFFFFF;
-            border-radius: 8px;
-            border-left: 4px solid #1F4D3A;
-            overflow: hidden;
-        }
-
-        .faq-item summary {
-            padding: 20px;
-            cursor: pointer;
-            color: #1F4D3A;
-            font-size: 16px;
-            font-weight: bold;
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .faq-item summary::-webkit-details-marker {
-            display: none;
-        }
-
-        .faq-item summary::after {
-            content: '+';
-            font-size: 20px;
-        }
-
-        .faq-item[open] summary::after {
-            content: '−';
-        }
-
-        .faq-content {
-            padding: 0 20px 20px 20px;
-            color: #1A1A1A;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .guarantees {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
-            text-align: center;
-        }
-
-        .guarantee {
-            padding: 20px;
-            background: #E7F1EC;
-            border-radius: 8px;
-        }
-
-        .guarantee h3 {
-            color: #1F4D3A;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .guarantee p {
-            color: #1A1A1A;
-            font-size: 14px;
-        }
-
-        .cta-section {
-            background: linear-gradient(135deg, #1F4D3A 0%, #2E6B52 100%);
-            color: #FFFFFF;
-            padding: 50px 40px;
-            border-radius: 12px;
-            text-align: center;
-            margin: 40px 0;
-        }
-
-        .cta-section h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        .cta-section p {
-            font-size: 16px;
-            margin-bottom: 30px;
-            opacity: 0.95;
-        }
-
-
-
-        .footer-cta {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        .footer-cta a {
-            padding: 12px 30px;
-            background-color: #FFFFFF;
-            color: #1F4D3A;
-            border: 2px solid #FFFFFF;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .footer-cta a:hover {
-            background-color: transparent;
-            color: #FFFFFF;
-        }
-
-        @media (max-width: 768px) {
-            .plan-card.popular {
-                transform: scale(1);
-            }
-
-            .plans-grid {
-                grid-template-columns: 1fr;
-            }
-
-            header h1 {
-                font-size: 24px;
-            }
-
-            .cta-section h2 {
-                font-size: 22px;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #FFFFFF; color: #1A1A1A; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        
+        .logo-container { text-align: center; margin-bottom: 20px; padding-top: 20px; }
+        .logo-container img { max-width: 180px; height: auto; }
+
+        header { text-align: center; margin-bottom: 40px; padding: 30px 20px; background-color: #E7F1EC; border-radius: 12px; }
+        .commitment { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 10px; }
+        .commitment-card { background: #FFFFFF; padding: 20px; border-radius: 8px; border: 2px solid #E7F1EC; }
+        .commitment-card h3 { color: #1F4D3A; margin-bottom: 10px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+        .commitment-card p { color: #1A1A1A; font-size: 16px; line-height: 1.5; }
+        
+        .testimonials-section { background-color: #F3F4F6; padding: 40px 20px; margin: 40px 0; border-radius: 12px; text-align: center; }
+        .testimonials-section h2 { color: #1F4D3A; font-size: 28px; margin-bottom: 15px; }
+        .testimonials-section p { color: #1A1A1A; font-size: 18px; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        
+        .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin: 40px 0; }
+        .pillar { text-align: center; }
+        .pillar h3 { color: #1F4D3A; font-size: 20px; margin-bottom: 15px; }
+        .pillar p { color: #1A1A1A; font-size: 16px; }
+        
+        .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin: 40px 0; }
+        .plan-card { background: #FFFFFF; border: 2px solid #E7F1EC; border-radius: 12px; padding: 30px; position: relative; transition: all 0.3s ease; }
+        .plan-card:hover { border-color: #1F4D3A; box-shadow: 0 8px 24px rgba(31, 77, 58, 0.1); }
+        .plan-card.popular { border-color: #1F4D3A; background: #E7F1EC; transform: scale(1.05); }
+        .popular-badge { position: absolute; top: -15px; left: 20px; background: #1F4D3A; color: #FFFFFF; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
+        .plan-name { color: #1F4D3A; font-size: 22px; font-weight: bold; margin-bottom: 10px; margin-top: 10px; }
+        .plan-subtitle { color: #1A1A1A; font-size: 14px; margin-bottom: 20px; opacity: 0.8; }
+        .plan-price { color: #1F4D3A; font-size: 32px; font-weight: bold; margin-bottom: 5px; }
+        .plan-price-note { color: #1A1A1A; font-size: 14px; margin-bottom: 25px; opacity: 0.8; }
+        .plan-features { list-style: none; margin-bottom: 30px; }
+        .plan-features li { color: #1A1A1A; padding: 10px 0; border-bottom: 1px solid #E7F1EC; font-size: 14px; }
+        .plan-features li:before { content: "✓ "; color: #1F4D3A; font-weight: bold; margin-right: 8px; }
+        
+        .cta-button { width: 100%; padding: 14px; background-color: #1F4D3A; color: #FFFFFF; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; text-align: center; }
+        .cta-button:hover { background-color: #2E6B52; transform: translateY(-2px); }
+        .cta-button-secondary { background-color: #2E6B52; }
+        
+        .faq-section { background-color: #F3F4F6; padding: 40px; border-radius: 12px; margin: 40px 0; }
+        .faq-item { margin-bottom: 15px; background: #FFFFFF; border-radius: 8px; border-left: 4px solid #1F4D3A; overflow: hidden; }
+        .faq-item summary { padding: 20px; cursor: pointer; color: #1F4D3A; font-size: 16px; font-weight: bold; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        .faq-item summary::after { content: '+'; font-size: 20px; }
+        .faq-item[open] summary::after { content: '−'; }
+        .faq-content { padding: 0 20px 20px 20px; color: #1A1A1A; font-size: 14px; line-height: 1.6; }
+        
+        .guarantees { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 60px 0; text-align: center; }
+        .guarantee { padding: 20px; background: #E7F1EC; border-radius: 8px; }
+        
+        .cta-section { background: linear-gradient(135deg, #1F4D3A 0%, #2E6B52 100%); color: #FFFFFF; padding: 60px 40px; border-radius: 12px; text-align: center; margin: 40px 0; clear: both; }
+        .footer-cta a { padding: 15px 40px; background-color: #FFFFFF; color: #1F4D3A; border-radius: 8px; font-size: 16px; font-weight: bold; text-decoration: none; display: inline-block; }
+        @media (max-width: 768px) { .plan-card.popular { transform: scale(1); } .plans-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>         
+        <div class="logo-container">
+            <img src="logo.png.png" alt="MOVA-SE Logo" onerror="this.style.display='none'">
+        </div>
+        <header>
             <div class="commitment">
-                <div class="commitment-card">
-                    <h3>Nosso Compromisso</h3>
-                    <p>Um dia de cada vez. No seu ritmo. No seu processo.</p>
-                </div>
-                <div class="commitment-card">
-                    <h3>Resultado</h3>
-                    <p>O Mensal te coloca em movimento. O Anual te transforma.</p>
-                </div>
-                <div class="commitment-card">
-                    <h3>Garantia</h3>
-                    <p>7 dias para experimentar. Sem risco. Sem complicação.</p>
-                </div>
+                <div class="commitment-card"><h3>Nosso Compromisso</h3><p>Um dia de cada vez. No seu ritmo. No seu processo.</p></div>
+                <div class="commitment-card"><h3>Resultado</h3><p>O Mensal te coloca em movimento. O Anual te transforma.</p></div>
+                <div class="commitment-card"><h3>Garantia</h3><p>7 dias para experimentar. Sem risco. Sem complicação.</p></div>
             </div>
         </header>
-
         <section class="testimonials-section">
             <h2>Centenas de mulheres já transformaram suas vidas</h2>
             <p>Agora é a sua vez</p>
             <p style="font-size: 16px; opacity: 0.9;">Quando o treino cabe na rotina, o resultado vem. Transformação real, para mulheres reais, com vidas reais.</p>
         </section>
-
         <section class="pillars">
-            <div class="pillar">
-                <h3>💪 Movimento</h3>
-                <p>Aulas ao vivo seg-sex (8h) + gravações 24h. Treinos em casa ou academia, no seu ritmo.</p>
-            </div>
-            <div class="pillar">
-                <h3>🥗 Alimentação</h3>
-                <p>Cardápios práticos e reais ao longo do ano. Nada de dieta restritiva. Comida que nutre.</p>
-            </div>
-            <div class="pillar">
-                <h3>✨ Emocional</h3>
-                <p>Meditações, reflexões e conteúdos para você entender e controlar suas emoções. Equilíbrio emocional que transforma.</p>
-            </div>
+            <div class="pillar"><h3>💪 Movimento</h3><p>Aulas ao vivo seg-sex (8h) + gravações 24h. Treinos em casa ou academia, no seu ritmo.</p></div>
+            <div class="pillar"><h3>🥗 Alimentação</h3><p>Cardápios práticos e reais ao longo do ano. Nada de dieta restritiva. Comida que nutre.</p></div>
+            <div class="pillar"><h3>✨ Emocional</h3><p>Meditações, reflexões e conteúdos para você entender e controlar suas emoções.</p></div>
         </section>
-
         <section>
             <h2 style="color: #1F4D3A; font-size: 28px; text-align: center; margin-bottom: 15px;">Sua Transformação Começa Aqui</h2>
-            <p style="text-align: center; color: #1A1A1A; font-size: 16px; margin-bottom: 40px;">Movimento. Alimentação. Emocional. Tudo que você precisa para recuperar constância, amor próprio e equilíbrio — no seu ritmo.</p>
-
-            <div class="plans-section">
-                <h2>Escolha seu plano</h2>
-                <div class="plans-subtitle">
-                    Todos com acesso imediato e garantia de 7 dias<br>
-                    ✓ Sem taxas ocultas • Suporte diário • Flexibilidade total
+            <div class="plans-grid">
+                <div class="plan-card popular">
+                    <div class="popular-badge">⭐ Mais Popular</div>
+                    <h3 class="plan-name">VIP Anual</h3>
+                    <div class="plan-price">R$ 1.518,04</div>
+                    <p class="plan-price-note">ou 12x de R$ 157,00</p>
+                    <ul class="plan-features"><li>Aulas ao vivo</li><li>Gravações 24h</li><li>Treinos no app</li><li>Cardápios</li><li>Trilha Emocional</li></ul>
+                    <a href="https://pay.kiwify.com.br/HTXC4MP" class="cta-button">Se Inscreva no VIP Anual</a>
                 </div>
-
-                <div class="plans-grid">
-                    <!-- VIP ANUAL -->
-                    <div class="plan-card popular">
-                        <div class="popular-badge">⭐ Mais Popular</div>
-                        <h3 class="plan-name">VIP Anual</h3>
-                        <p class="plan-subtitle">A experiência mais completa do programa</p>
-                        <div class="plan-price">R$ 1.518,04</div>
-                        <p class="plan-price-note">ou 12x de R$ 157,00</p>
-                        
-                        <ul class="plan-features">
-                            <li>Aulas ao vivo seg-sex (8h)</li>
-                            <li>Gravações disponíveis 24h</li>
-                            <li>Treinos no app (casa e academia)</li>
-                            <li>Cardápios + dicas de alimentação saudável</li>
-                            <li>Trilha 'Comigo Mesma' (emocional)</li>
-                            <li>Grupo com acompanhamento próximo</li>
-                            <li>Conteúdos exclusivos ao longo do ano</li>
-                        </ul>
-
-                        <div class="bonus-section">
-                            <h4>Bônus Exclusivo</h4>
-                            <ul>
-                                <li>Biblioteca completa de aulas (2025, 2026)</li>
-                                <li>Acesso ao Desafio Trinca 21 (detox com sucos)</li>
-                            </ul>
-                        </div>
-
-                        <a href="https://pay.kiwify.com.br/HTXC4MP" class="cta-button">Se Inscreva no VIP Anual</a>
-                    </div>
-
-                    <!-- VIP TRIMESTRAL -->
-                    <div class="plan-card">
-                        <p style="color: #1F4D3A; font-weight: bold; margin-bottom: 10px;">Melhor para começar</p>
-                        <h3 class="plan-name">VIP Trimestral</h3>
-                        <p class="plan-subtitle">Experiência completa por 3 meses</p>
-                        <div class="plan-price">R$ 526,80</div>
-                        <p class="plan-price-note">ou 3x de R$ 188,00</p>
-                        
-                        <ul class="plan-features">
-                            <li>Aulas ao vivo seg-sex (8h)</li>
-                            <li>Gravações disponíveis 24h</li>
-                            <li>Treinos no app (casa e academia)</li>
-                            <li>Cardápios + dicas de alimentação saudável</li>
-                            <li>Trilha 'Comigo Mesma' (emocional)</li>
-                            <li>Grupo com acompanhamento próximo</li>
-                            <li>Conteúdos exclusivos</li>
-                        </ul>
-
-                        <a href="https://pay.kiwify.com.br/vxNdbnH" class="cta-button cta-button-secondary">Se Inscreva no VIP Trimestral</a>
-                    </div>
-
-                    <!-- ESSENCIAL -->
-                    <div class="plan-card">
-                        <h3 class="plan-name">Essencial</h3>
-                        <p class="plan-subtitle">Acompanhamento com proposta mais objetiva</p>
-                        <div class="plan-price">R$ 99,00</div>
-                        <p class="plan-price-note">por mês (assinatura recorrente)</p>
-                        
-                        <ul class="plan-features">
-                            <li>Aulas ao vivo seg-sex (8h)</li>
-                            <li>Treinos no app</li>
-                            <li>Grupo para dúvidas (resposta em até 48h)</li>
-                        </ul>
-
-                        <a href="https://pay.kiwify.com.br/Fru2gYD" class="cta-button cta-button-secondary">Se Inscreva no Essencial</a>
-                    </div>
-
-                    <!-- FLEX -->
-                    <div class="plan-card">
-                        <h3 class="plan-name">Flex</h3>
-                        <p class="plan-subtitle">Escolha o que funciona melhor para você</p>
-                        <div class="plan-price">R$ 570,49</div>
-                        <p class="plan-price-note">ou 12x de R$ 59,00</p>
-                        
-                        <ul class="plan-features">
-                            <li>Escolha: Aulas ao vivo OU Treinos no app</li>
-                            <li>Grupo para dúvidas (resposta em até 48h)</li>
-                        </ul>
-
-                        <a href="https://pay.kiwify.com.br/g3UfpJn" class="cta-button cta-button-secondary">Se Inscreva no Flex</a>
-                    </div>
+                <div class="plan-card">
+                    <h3 class="plan-name">VIP Trimestral</h3>
+                    <div class="plan-price">R$ 526,80</div>
+                    <p class="plan-price-note">ou 3x de R$ 188,00</p>
+                    <ul class="plan-features"><li>Aulas ao vivo</li><li>Gravações 24h</li><li>Treinos no app</li><li>Cardápios</li></ul>
+                    <a href="https://pay.kiwify.com.br/vxNdbnH" class="cta-button cta-button-secondary">Se Inscreva no VIP Trimestral</a>
                 </div>
-            </div>
-
-            <div style="background: #F3F4F6; padding: 30px; border-radius: 12px; margin: 40px 0; text-align: center;">
-                <p style="color: #1A1A1A; font-size: 16px; line-height: 1.8;">
-                    <strong>A maioria das alunas que já conhecem a Diana</strong> acaba escolhendo o <strong>VIP</strong>. Por quê? Porque querem viver o acompanhamento completo e ter resultado mais consistente. Mas isso não significa que seja a melhor opção para VOCÊ agora.
-                </p>
-                <p style="color: #1A1A1A; font-size: 16px; margin-top: 15px; line-height: 1.8;">
-                    Cada mulher tem seu tempo, seu ritmo, seu processo. O importante é <strong>começar hoje</strong>. Escolha o plano que faz sentido para você neste momento e vá de lá.
-                </p>
+                <div class="plan-card">
+                    <h3 class="plan-name">Essencial</h3>
+                    <div class="plan-price">R$ 99,00</div>
+                    <p class="plan-price-note">por mês</p>
+                    <ul class="plan-features"><li>Aulas ao vivo</li><li>Treinos no app</li><li>Grupo para dúvidas</li></ul>
+                    <a href="https://pay.kiwify.com.br/Fru2gYD" class="cta-button cta-button-secondary">Se Inscreva no Essencial</a>
+                </div>
+                <div class="plan-card">
+                    <h3 class="plan-name">Flex</h3>
+                    <div class="plan-price">R$ 570,49</div>
+                    <p class="plan-price-note">ou 12x de R$ 59,00</p>
+                    <ul class="plan-features"><li>Aulas ao vivo OU App</li><li>Grupo para dúvidas</li></ul>
+                    <a href="https://pay.kiwify.com.br/g3UfpJn" class="cta-button cta-button-secondary">Se Inscreva no Flex</a>
+                </div>
             </div>
         </section>
-
         <section class="faq-section">
             <h2>Dúvidas?</h2>
-            
-            <details class="faq-item">
-                <summary>Sou iniciante, por onde começo?</summary>
-                <div class="faq-content">
-                    <p>Perfeito! Comece com o <strong>VIP Trimestral</strong>. Você tem 3 meses para viver a experiência completa, ver os resultados e decidir se quer continuar. A maioria das alunas que começam aqui depois escolhem o Anual. Sem pressão, sem compromisso.</p>
-                </div>
-            </details>
-
-            <details class="faq-item">
-                <summary>Posso mudar de plano depois?</summary>
-                <div class="faq-content">
-                    <p>Sim! Você pode fazer upgrade ou downgrade do seu plano a qualquer momento. É só entrar em contato com a gente pelo WhatsApp.</p>
-                </div>
-            </details>
-
-            <details class="faq-item">
-                <summary>Há garantia de satisfação?</summary>
-                <div class="faq-content">
-                    <p>100%! Você tem <strong>7 dias para experimentar sem risco</strong>. Se não se sentir conectada com o programa, é só solicitar o cancelamento dentro desse período. Sem complicação, sem burocracia. Queremos que você fique porque ama, não porque se sente obrigada. Seu compromisso é com você mesma.</p>
-                </div>
-            </details>
-
-            <details class="faq-item">
-                <summary>O que é o plano Essencial?</summary>
-                <div class="faq-content">
-                    <p>O plano Essencial é uma <strong>assinatura recorrente mensal</strong>. Você pode cancelar quando quiser, é bem simples. É só entrar na plataforma Kiwify e solicitar o cancelamento diretamente lá. Sem taxas extras, sem complicação.</p>
-                </div>
-            </details>
-
-            <details class="faq-item">
-                <summary>Preciso de equipamento para os treinos?</summary>
-                <div class="faq-content">
-                    <p>Não! Os treinos são pensados para você fazer em casa, com o peso do seu corpo. Mas se quiser usar equipamento, também funciona.</p>
-                </div>
-            </details>
+            <details class="faq-item"><summary>Sou iniciante, por onde começo?</summary><div class="faq-content"><p>Perfeito! Comece com o VIP Trimestral. Você tem 3 meses para viver a experiência completa.</p></div></details>
+            <details class="faq-item"><summary>Posso mudar de plano depois?</summary><div class="faq-content"><p>Sim! Você pode fazer upgrade ou downgrade do seu plano a qualquer momento.</p></div></details>
+            <details class="faq-item"><summary>Há garantia de satisfação?</summary><div class="faq-content"><p>100%! Você tem 7 dias para experimentar sem risco.</p></div></details>
+            <details class="faq-item"><summary>O que é o plano Essencial?</summary><div class="faq-content"><p>É uma assinatura recorrente mensal. Você pode cancelar quando quiser.</p></div></details>
+            <details class="faq-item"><summary>Preciso de equipamento?</summary><div class="faq-content"><p>Não! Os treinos são pensados para você fazer em casa, com o peso do seu corpo.</p></div></details>
         </section>
-
         <section class="guarantees">
-            <div class="guarantee">
-                <h3>✓ 7 dias de garantia</h3>
-                <p>Experimente sem risco</p>
-            </div>
-            <div class="guarantee">
-                <h3>✓ Suporte diário</h3>
-                <p>Estamos aqui para você</p>
-            </div>
-            <div class="guarantee">
-                <h3>✓ Comunidade ativa</h3>
-                <p>Mulheres que se apoiam</p>
-            </div>
+            <div class="guarantee"><h3>✓ 7 dias de garantia</h3><p>Experimente sem risco</p></div>
+            <div class="guarantee"><h3>✓ Suporte diário</h3><p>Estamos aqui para você</p></div>
+            <div class="guarantee"><h3>✓ Comunidade ativa</h3><p>Mulheres que se apoiam</p></div>
         </section>
-
         <section class="cta-section">
             <h2>Sua transformação começa agora</h2>
             <p>Não espere pela segunda-feira. Não espere por "quando tiver tempo". Seu corpo e sua mente agradecem a você por começar hoje.</p>
-            <p style="font-size: 14px; opacity: 0.9;">Ainda tem dúvidas? Quer saber qual plano é melhor para você?</p>
             <div class="footer-cta">
-                <a href="https://wa.me/5511982333871?text=Olá!%20Estava%20olhando%20a%20página%20de%20planos%20do%20MOVA-SE%20e%20gostaria%20de%20tirar%20uma%20dúvida%20sobre%20a%20inscrição.">💬 Fale Conosco - Tire Suas Dúvidas</a>
+                <a href="https://wa.me/5511982333871?text=Olá!%20Estava%20olhando%20a%20página%20de%20planos%20do%20MOVA-SE%20e%20gostaria%20de%20tirar%20uma%20dúvida." target="_blank">💬 Fale Conosco</a>
             </div>
         </section>
     </div>
